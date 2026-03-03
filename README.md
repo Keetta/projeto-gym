@@ -11,17 +11,24 @@ Aplicação para gestão de alunos e planos de uma academia, permitindo controle
 - Execução via Terminal (CLI)
 
 # 📚 Conceitos Aplicados
-✅ Encapsulamento
-- Atributos privados
-- Uso de getters e setters
+! ✅ Encapsulamento
+
+ - Atributos privados.
+ -  Uso de getters e setters.
+
 ✅ Abstração e Herança
-- Plano é uma classe abstrata
-- Especializações de plano implementam comportamentos específicos
+
+- Plano é uma classe abstrata.
+- Especializações de plano implementam comportamentos específicos.
+
 ✅ Polimorfismo
-- O método calcularMensalidade() possui comportamentos diferentes dependendo do tipo de plano
+
+- O método calcularMensalidade() possui comportamentos diferentes dependendo do tipo de plano.
+
 ✅ Collections
-- Uso de ArrayList<Aluno> para armazenamento dinâmico
-- Proibido uso de arrays fixos
+
+- Uso de ArrayList<Aluno> para armazenamento dinâmico.
+- Proibido uso de arrays fixos.
 
 # 🚀 Funcionalidades
 ### 📌 CRUD Completo de Alunos

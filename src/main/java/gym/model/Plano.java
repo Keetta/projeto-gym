@@ -1,8 +1,8 @@
 package gym.model;
 
 public abstract class Plano {
-    private String nome;
-    private double valorBase;
+    protected String nome;
+    protected double valorBase;
 
     public Plano(String nome, double valorBase){
         this.nome = nome;

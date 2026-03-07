@@ -7,6 +7,6 @@ public class PlanoPremium extends Plano {
 
     @Override
     public double calcularMensalidade(){
-        return getValorBase() * 1.25;
+        return getValorBase() * 1.5;
     }
 }

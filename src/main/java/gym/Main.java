@@ -1,6 +1,8 @@
 package gym;
 
 import java.util.Scanner;
+
+import gym.model.Aluno;
 import gym.model.Plano;
 import gym.model.PlanoBasico;
 import gym.model.PlanoPremium;
@@ -9,11 +11,13 @@ import gym.service.GymService;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        GymService service = new GymService();
 
-        exibirMenu(scanner);
+        exibirMenu(scanner, service);
     }
 
-    public static void cadastrarAluno(Scanner scanner) {
+    public static void exibirCadastroAluno(Scanner scanner, GymService service) {
+
         System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
         System.out.println("1. [📦] PLANO BÁSICO");
         System.out.println("2. [💎] PLANO PREMIUM");
@@ -21,39 +25,56 @@ public class Main {
         System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
 
         int option = scanner.nextInt();
+        scanner.nextLine();
 
-        switch (option){
-            case 1:
-                System.out.println("Plano Básico");
-                break;
-            case 2:
-                System.out.println("Plano Premium");
-                break;
-            case 0: exibirMenu(scanner);
-            default:
-                System.out.println("[❌] Valor Inválido!");
+        if(option == 0) return;
+
+        System.out.print("ID: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.print("Nome: ");
+        String nome = scanner.nextLine();
+
+        System.out.print("Idade: ");
+        int idade = scanner.nextInt();
+
+        Plano plano;
+
+        if(option == 1){
+            plano = new PlanoBasico("Básico", 100);
+        } else {
+            plano = new PlanoPremium("Premium", 100);
         }
+
+        Aluno aluno = new Aluno(id, nome, idade, plano);
+
+        service.cadastrarAluno(aluno);
     }
 
-    public static void exibirMenu(Scanner scanner) {
-        System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
-        System.out.println("1. [📝] CADASTRAR ALUNO");
-        System.out.println("2. [📚] LISTAR ALUNOS");
-        System.out.println("3. [📮] ATUALIZAR ALUNO");
-        System.out.println("4. [🚯] REMOVER ALUNO");
-        System.out.println("0. SAIR");
-        System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+    public static void exibirMenu(Scanner scanner, GymService service) {
 
-        int option = scanner.nextInt();
+        int option;
+        do {
+            System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+            System.out.println("1. [📝] CADASTRAR ALUNO");
+            System.out.println("2. [📚] LISTAR ALUNOS");
+            System.out.println("3. [📮] ATUALIZAR ALUNO");
+            System.out.println("4. [🚯] REMOVER ALUNO");
+            System.out.println("0. SAIR");
+            System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
 
-        switch (option){
-            case 1: cadastrarAluno(scanner); break;
-            case 2: /* peraí */ break;
-            case 3: /* peraí */ break;
-            case 4: /* peraí */ break;
-            case 0: return;
-            default:
-                System.out.println("[❌] Valor Inválido!");
-        }
+            option = scanner.nextInt();
+
+            switch (option){
+                case 1: exibirCadastroAluno(scanner, service); break;
+                case 2: service.listarAlunos(); break;
+                case 3: service.atualizarAluno(); break;
+                case 4: service.removerAluno(); break;
+                case 0: return;
+                default:
+                    System.out.println("[❌] Valor Inválido!");
+            }
+        } while (option != 0);
     }
 }

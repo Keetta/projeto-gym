@@ -40,5 +40,3 @@ Aplicação para gestão de alunos e planos de uma academia, permitindo controle
 
 ### 🔍 Filtros de Busca
 - Buscar alunos por nome
-- Buscar alunos por tipo de plano
-- Buscar alunos por faixa etária
